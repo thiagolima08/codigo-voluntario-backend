@@ -15,7 +15,14 @@ public class projetosService {
     private projetoRepositorio projectRepository;
 
     public List<Projetos> getProjects(){
-
         return this.projectRepository.findAll();
+    }
+
+    public Projetos getProjectPorId(Long idProject){
+        return this.projectRepository.findById(idProject).orElse(null);
+    }
+
+    public Projetos insertProject(Projetos projeto){
+        return this.projectRepository.save(projeto);
     }
 }

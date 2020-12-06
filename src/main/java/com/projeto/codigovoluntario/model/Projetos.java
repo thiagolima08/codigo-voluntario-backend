@@ -10,12 +10,13 @@ public class Projetos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String nome;
     private String url;
     private String descricao;
+    private String tecnologias;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
@@ -43,4 +44,11 @@ public class Projetos {
         this.descricao = descricao;
     }
 
+    public String getTecnologias() {
+        return tecnologias;
+    }
+
+    public void setTecnologias(String tecnologias) {
+        this.tecnologias = tecnologias;
+    }
 }
