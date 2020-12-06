@@ -5,7 +5,6 @@ import com.projeto.codigovoluntario.model.Projetos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -24,5 +23,24 @@ public class projetosService {
 
     public Projetos insertProject(Projetos projeto){
         return this.projectRepository.save(projeto);
+    }
+
+    public Projetos updateProject(Long id, Projetos project){
+        return projectRepository.findById(id)
+                .map(body -> {
+                    body.setNome(project.getNome());
+                    body.setDescricao(project.getDescricao());
+                    body.setTecnologias(project.getTecnologias());
+                    body.setUrl(project.getUrl());
+
+                    Projetos p = projectRepository.save(body);
+                    return p;
+                }).orElse(null);
+    }
+
+
+    public void deleteProject(Long idProject){
+        this.projectRepository.deleteById(idProject);
+
     }
 }

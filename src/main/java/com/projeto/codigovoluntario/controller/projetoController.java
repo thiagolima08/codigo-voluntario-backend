@@ -17,7 +17,6 @@ public class projetoController {
 
     @GetMapping("/listarprojetos")
     public List<Projetos> getProject(){
-
         return this.projectservice.getProjects();
     }
 
@@ -29,6 +28,17 @@ public class projetoController {
     @PostMapping("/inserirprojetos")
     public Projetos insertProject(@RequestBody Projetos projeto){
         return this.projectservice.insertProject(projeto);
+    }
+
+    @PutMapping("/editarprojeto/{id}")
+    public Projetos updateProject(@PathVariable("id") Long id, @RequestBody Projetos projeto){
+        return this.projectservice.updateProject(id, projeto);
+
+    }
+
+    @DeleteMapping("/excluirprojeto/{id}")
+    public void deleteProject(@PathVariable("id") Long id){
+        this.projectservice.deleteProject(id);
 
     }
 }
