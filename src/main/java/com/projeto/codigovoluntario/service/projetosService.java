@@ -28,7 +28,6 @@ public class projetosService {
     public Projetos updateProject(Long id, Projetos project){
         return projectRepository.findById(id)
                 .map(body -> {
-                    body.setNome(project.getNome());
                     body.setDescricao(project.getDescricao());
                     body.setTecnologias(project.getTecnologias());
                     body.setUrl(project.getUrl());
@@ -36,7 +35,38 @@ public class projetosService {
                     Projetos p = projectRepository.save(body);
                     return p;
                 }).orElse(null);
+        // esse método apaga os dados anteriores, deixando tudo null
     }
+
+
+
+    /*public Projetos updateProject(Long id, Projetos project){
+        return projectRepository.findById(id)
+                .map(body -> {
+                    Projetos projetoAntigo = projectRepository.findById(id).orElse(null);
+                    if(project.getNome().equals(null)){
+                        body.setNome(projetoAntigo.getNome());
+                    }else if(project.getDescricao().equals(null)){
+                        body.setDescricao(projetoAntigo.getDescricao());
+                    }else if(project.getTecnologias().isBlank()){
+                        body.setTecnologias(projetoAntigo.getTecnologias());
+                    }else if(project.getUrl().equals(null)){
+                        body.setUrl(projetoAntigo.getUrl());
+                    }else{
+                        body.setNome(project.getNome());
+                        body.setDescricao(project.getDescricao());
+                        body.setTecnologias(project.getTecnologias());
+                        body.setUrl(project.getUrl());
+                    }
+
+                    Projetos p = projectRepository.save(body);
+                    return p;
+                }).orElse(null);
+    }
+    Esse método faz uma tratativa para não apagar os registros antigos, mas está estourando null point exception
+
+     */
+
 
 
     public void deleteProject(Long idProject){
