@@ -25,6 +25,7 @@ public class projetosService {
         return this.projectRepository.save(projeto);
     }
 
+    /*
     public Projetos updateProject(Long id, Projetos project){
         return projectRepository.findById(id)
                 .map(body -> {
@@ -38,34 +39,40 @@ public class projetosService {
         // esse método apaga os dados anteriores, deixando tudo null
     }
 
+     */
 
 
-    /*public Projetos updateProject(Long id, Projetos project){
+
+    public Projetos updateProject(Long id, Projetos project){
         return projectRepository.findById(id)
                 .map(body -> {
                     Projetos projetoAntigo = projectRepository.findById(id).orElse(null);
-                    if(project.getNome().equals(null)){
-                        body.setNome(projetoAntigo.getNome());
-                    }else if(project.getDescricao().equals(null)){
-                        body.setDescricao(projetoAntigo.getDescricao());
-                    }else if(project.getTecnologias().isBlank()){
-                        body.setTecnologias(projetoAntigo.getTecnologias());
-                    }else if(project.getUrl().equals(null)){
-                        body.setUrl(projetoAntigo.getUrl());
-                    }else{
-                        body.setNome(project.getNome());
-                        body.setDescricao(project.getDescricao());
-                        body.setTecnologias(project.getTecnologias());
-                        body.setUrl(project.getUrl());
+                    if(project.getNome() == null){
+                        project.setNome(projetoAntigo.getNome());
+
                     }
+                    if(project.getDescricao() == null){
+                        project.setDescricao(projetoAntigo.getDescricao());
+
+                    }
+                    if(project.getTecnologias() == null){
+                        project.setTecnologias(projetoAntigo.getTecnologias());
+
+                    }
+                    if(project.getUrl() == null){
+                        project.setUrl(projetoAntigo.getUrl());
+                    }
+
+                    body.setNome(project.getNome());
+                    body.setDescricao(project.getDescricao());
+                    body.setTecnologias(project.getTecnologias());
+                    body.setUrl(project.getUrl());
 
                     Projetos p = projectRepository.save(body);
                     return p;
                 }).orElse(null);
     }
-    Esse método faz uma tratativa para não apagar os registros antigos, mas está estourando null point exception
-
-     */
+    //Esse método faz uma tratativa para não apagar os registros antigos, mas está estourando null point exception
 
 
 
