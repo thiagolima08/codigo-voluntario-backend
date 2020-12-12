@@ -1,5 +1,7 @@
 package com.projeto.codigovoluntario.model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 
 
