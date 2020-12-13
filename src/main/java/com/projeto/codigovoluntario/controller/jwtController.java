@@ -3,6 +3,7 @@ package com.projeto.codigovoluntario.controller;
 
 import com.projeto.codigovoluntario.configJWT.JwtTokenUtil;
 import com.projeto.codigovoluntario.model.JwtRequest;
+import com.projeto.codigovoluntario.model.JwtResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
