@@ -5,17 +5,17 @@ import java.util.ArrayList;
 
 @Entity
 @Table(name = "USUARIO")
-public class Usuario {
+public class ApplicationUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String email;
     private String password;
 
-    public Usuario(String email, String password) {
+    public Long getId(){
+        return id;
     }
-
-    public Usuario(){}
 
     public String getEmail() {
         return email;
