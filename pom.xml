@@ -16,6 +16,7 @@
 
 	<properties>
 		<java.version>11</java.version>
+		<maven.compiler.release>9</maven.compiler.release>
 	</properties>
 
 	<dependencies>
@@ -54,18 +55,13 @@
 	    <artifactId>maven-compiler-plugin</artifactId>
 	    <version>3.8.1</version>
 	</dependency>
-	    </dependencies>
+	</dependencies>
 
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>2.4.0</version>
-				<configuration>
-					<source>11</source>  <!-- same as <java.version> -->
-					<target>11</target>    <!-- same as <java.version> -->
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
