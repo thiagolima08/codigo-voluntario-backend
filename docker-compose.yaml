@@ -1,0 +1,37 @@
+version: '3'
+services:
+  nginx:
+   container_name: cv-nginx
+   image: nginx:1.13
+   restart: always
+   ports:
+   - 80:80
+   - 443:443
+   volumes:
+   - ./nginx/conf.d:/etc/nginx/conf.d
+   depends_on:
+   - app
+
+  postgresdb:
+    container_name: cv-postgres
+    image: postgres:9.5
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=codigovoluntario
+    ports:
+      - 5432:5432
+
+  app:
+    container_name: cv-app
+    restart: always
+    build: ./
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - ~/.m2:/root/.m2
+    expose:
+      - "8080"
+    command: mvn clean spring-boot:run
+    depends_on:
+      - postgresdb
