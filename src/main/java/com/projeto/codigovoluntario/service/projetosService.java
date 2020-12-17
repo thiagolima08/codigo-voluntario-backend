@@ -41,8 +41,6 @@ public class projetosService {
 
      */
 
-
-
     public Projetos updateProject(Long id, Projetos project){
         return projectRepository.findById(id)
                 .map(body -> {
