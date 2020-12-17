@@ -1,6 +1,5 @@
 package com.projeto.codigovoluntario.controller;
 
-
 import com.projeto.codigovoluntario.model.Usuario;
 import com.projeto.codigovoluntario.service.usuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,31 +12,30 @@ import java.util.List;
 public class usuarioController {
 
     @Autowired
-    private usuarioService usuarioservice;
+    private usuarioService userservice;
 
     @GetMapping("/user")
     public List<Usuario> getUser(){
-        return this.usuarioservice.getUser();
+        return this.userservice.getUser();
     }
 
     @GetMapping("/user/{id}")
     public Usuario getUserPorId(@PathVariable("id") Long id){
-        return this.usuarioservice.getUsuarioPorId(id);
+        return this.userservice.getUsuarioPorId(id);
     }
 
     @PostMapping("/user")
     public Usuario insertUser(@RequestBody Usuario usuario){
-        return this.usuarioservice.insertUser(usuario);
+        return this.userservice.insertUser(usuario);
     }
 
     @PutMapping("/user/{id}")
     public Usuario updateUser(@PathVariable("id") Long id, @RequestBody Usuario usuario){
-        return this.usuarioservice.updateUser(id, usuario);
+        return this.userservice.updateUser(id, usuario);
     }
 
     @DeleteMapping("/user/{id}")
     public void deleteUser(@PathVariable("id") Long id){
-        this.usuarioservice.deleteUser(id);
+        this.userservice.deleteUser(id);
     }
-
 }
