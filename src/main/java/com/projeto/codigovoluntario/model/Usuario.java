@@ -13,6 +13,11 @@ public class Usuario {
     private String email;
     private String password;
 
+    public Usuario(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
     public Long getIdUser() {
         return idUser;
     }
@@ -32,4 +37,5 @@ public class Usuario {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }
