@@ -14,27 +14,27 @@ public class usuarioController {
     @Autowired
     private usuarioService userservice;
 
-    @GetMapping("/user")
+    @GetMapping("/users")
     public List<Usuario> getUser(){
         return this.userservice.getUser();
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/users/{id}")
     public Usuario getUserPorId(@PathVariable("id") Long id){
         return this.userservice.getUsuarioPorId(id);
     }
 
-    @PostMapping("/user")
+    @PostMapping("/users")
     public Usuario insertUser(@RequestBody Usuario usuario){
         return this.userservice.insertUser(usuario);
     }
 
-    @PutMapping("/user/{id}")
+    @PutMapping("/users/{id}")
     public Usuario updateUser(@PathVariable("id") Long id, @RequestBody Usuario usuario){
         return this.userservice.updateUser(id, usuario);
     }
 
-    @DeleteMapping("/user/{id}")
+    @DeleteMapping("/users/{id}")
     public void deleteUser(@PathVariable("id") Long id){
         this.userservice.deleteUser(id);
     }

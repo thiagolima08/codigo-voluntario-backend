@@ -10,9 +10,6 @@ import java.awt.*;
 @SpringBootApplication
 public class CodigoVoluntarioApplication {
 
-
-    Usuario user = new Usuario("admin", "admin");
-
     public static void main(String[] args) {
         SpringApplication.run(CodigoVoluntarioApplication.class, args);
     }

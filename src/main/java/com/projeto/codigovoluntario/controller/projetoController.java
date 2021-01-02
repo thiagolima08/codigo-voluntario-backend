@@ -1,11 +1,10 @@
 package com.projeto.codigovoluntario.controller;
 
-import com.projeto.codigovoluntario.model.Projetos;
+import com.projeto.codigovoluntario.model.Projeto;
 import com.projeto.codigovoluntario.service.projetosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -16,22 +15,22 @@ public class projetoController {
     private projetosService projectservice;
 
     @GetMapping("/projects")
-    public List<Projetos> getProject(){
+    public List<Projeto> getProject(){
         return this.projectservice.getProjects();
     }
 
     @GetMapping("/projects/{id}")
-    public Projetos getProjectPorId(@PathVariable("id") Long id){
+    public Projeto getProjectPorId(@PathVariable("id") Long id){
         return this.projectservice.getProjectPorId(id);
     }
 
     @PostMapping("/projects")
-    public Projetos insertProject(@RequestBody Projetos projeto){
+    public Projeto insertProject(@RequestBody Projeto projeto){
         return this.projectservice.insertProject(projeto);
     }
 
     @PutMapping("/projects/{id}")
-    public Projetos updateProject(@PathVariable("id") Long id, @RequestBody Projetos projeto){
+    public Projeto updateProject(@PathVariable("id") Long id, @RequestBody Projeto projeto){
         return this.projectservice.updateProject(id, projeto);
     }
 

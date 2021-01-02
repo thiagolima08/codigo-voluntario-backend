@@ -1,7 +1,7 @@
 package com.projeto.codigovoluntario.service;
 
 import com.projeto.codigovoluntario.controller.repositorios.projetoRepositorio;
-import com.projeto.codigovoluntario.model.Projetos;
+import com.projeto.codigovoluntario.model.Projeto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,15 +13,15 @@ public class projetosService {
     @Autowired
     private projetoRepositorio projectRepository;
 
-    public List<Projetos> getProjects(){
+    public List<Projeto> getProjects(){
         return this.projectRepository.findAll();
     }
 
-    public Projetos getProjectPorId(Long idProject){
+    public Projeto getProjectPorId(Long idProject){
         return this.projectRepository.findById(idProject).orElse(null);
     }
 
-    public Projetos insertProject(Projetos projeto){
+    public Projeto insertProject(Projeto projeto){
         return this.projectRepository.save(projeto);
     }
 
@@ -41,10 +41,10 @@ public class projetosService {
 
      */
 
-    public Projetos updateProject(Long id, Projetos project){
+    public Projeto updateProject(Long id, Projeto project){
         return projectRepository.findById(id)
                 .map(body -> {
-                    Projetos projetoAntigo = projectRepository.findById(id).orElse(null);
+                    Projeto projetoAntigo = projectRepository.findById(id).orElse(null);
                     if(project.getNome() == null){
                         project.setNome(projetoAntigo.getNome());
 
@@ -66,7 +66,7 @@ public class projetosService {
                     body.setTecnologias(project.getTecnologias());
                     body.setUrl(project.getUrl());
 
-                    Projetos p = projectRepository.save(body);
+                    Projeto p = projectRepository.save(body);
                     return p;
                 }).orElse(null);
     }
